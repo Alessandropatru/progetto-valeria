@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/logo_v-removebg-preview.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il mio Portfolio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Unbounded:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg my-nav">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-5" href="#"><img src="/logo_v-removebg-preview.png" width="40px" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bolder" href="#" data-page="index.html" onclick="loadPage(event)">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder" href="#" data-page="curriculum.html" onclick="loadPage(event)">Curriculum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bolder" href="#" data-page="contatti.html" onclick="loadPage(event)">Contatti</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenitore per il contenuto dinamico -->
+    <div id="dynamic-content">
+        <!-- Contenuto iniziale -->
+        <header class="vh-100 d-flex align-items-center justify-content-center text-center">
+            <div class="container">
+                <div class="row d-flex align-items-center justify-content-center text-center">
+                    <div class="col-md-7">
+                        <p class="text-start p-presentation fw-light">Ciao, sono Valeria!</p>
+                        <h1 class="fw-bolder text-start mb-5">Design <br> funzionale, <br> esperienze <br> memorabili!</h1>
+                        <div class="text-start mb-5">
+                            <button class="btn-contact fw-bolder">
+                                <a class="a-btn-1" href="">Contattami</a>
+                            </button>
+                            <button class="fw-bolder button-progetti mb-2 ms-3">
+                                <a class="a-btn-2" href="">Progetti</a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="" alt="immagine di Valeria">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="bg-custom-section mb-5 text-center">
+            <div class="container text-center">
+                <h2 class="fw-bolder">Come tutto è iniziato</h2>
+                <p class="fw-light first-paragraph-start">Progettare esperienze non è solo il mio lavoro, è il mio linguaggio.</p>
+                <p class="second-paragraph-start fw-light fw-bold">L’UX/UI è dove le mie idee prendono forma e diventano emozione.</p>
+            </div>
+        </section>
+        <section class="move-section">
+            <h2 class="text-center new-h2">I miei lavori</h2>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-5 col-12">
+                        <div class="card custom-card">
+                            <img class="card-img-top" src="/ProgettoAccessibilita.jpeg" alt="immagine del progetto EcoDream Accessibilità" loading="lazy">
+                            <div class="card-body p-0 ms-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h3 class="card-title">EcoDream Accessibilità</h3>
+                                    <a href="" target="_blank" class="me-2 mb-1 btn cta-card" aria-label="visualizza il progetto Planty of Food"><i class="fs-3 icons-hover bi bi-arrow-right-short"></i></a>
+                                </div>
+                                <p class="paragraph-project">Analisi dell'accessibilità del sito web, identificazione dei problemi e soluzioni per ottimizzare l'esperienza utente e garantire un accesso universale.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12">
+                        <div class="card custom-card">
+                            <img class="card-img-top" src="/wireframing-image.jpeg" alt="immagine del progetto EcoDream Wireframe" loading="lazy">
+                            <div class="card-body p-0 ms-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h3 class="card-title">EcoDream Wireframe</h3>
+                                    <a href="" target="_blank" class="me-2 mb-1 btn cta-card" aria-label="visualizza il progetto EcoDream Wireframe"><i class="fs-3 icons-hover bi bi-arrow-right-short"></i></a>
+                                </div>
+                                <p class="paragraph-project">Rinnovo del sito web, comprendente la progettazione e l'introduzione di nuovi wireframe per una navigazione più fluida e una migliore fruibilità dei contenuti.</p>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-md-5 col-12">
+                        <div class="card custom-card">
+                            <img class="card-img-top" src="/wireframing-image.jpeg" alt="immagine del progetto EcoDream Wireframe" loading="lazy">
+                            <div class="card-body p-0 ms-3">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h3 class="card-title">EcoDream Wireframe</h3>
+                                    <a href="" target="_blank" class="me-2 mb-1 btn cta-card" aria-label="visualizza il progetto EcoDream Wireframe"><i class="fs-3 icons-hover bi bi-arrow-right-short"></i></a>
+                                </div>
+                                <p class="paragraph-project">Rinnovo del sito web, comprendente la progettazione e l'introduzione di nuovi wireframe per una navigazione più fluida e una migliore fruibilità dei contenuti.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5 yellow-bg section-spacing">
+            <div class="container px-5 pb-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-xxl-7">
+                        <!-- Header profile picture-->
+                        <div class="d-flex justify-content-center mt-5 mt-xxl-0">
+                            <div class="profile bg-gradient-primary-to-secondary mb-5">
+                                <img class="profile-img img-fluid" src="" alt="foto profilo di Annamaria Marzocca con un computer in mano" loading="lazy"> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-5">
+                        <!-- Header text content-->
+                        <div class="text-center text-xxl-start">
+                            <h2 class="mb-5 fw-bolder">About Me</h2>
+                             <p class="mb-5">Dopo il diploma al liceo linguistico, ho esplorato la mia creatività nel settore estetico, specializzandomi dopo tre anni di accademia. 
+                                <br> Quel mondo mi affascinava per la sua attenzione ai dettagli e l’espressione personale, ma sentivo il bisogno di nuovi stimoli per esprimere al meglio il mio potenziale creativo. 
+                                <br> È così che ho scoperto l'UX/UI Design, innamorandomi subito della sua capacità di unire funzionalità ed estetica. Sono una persona socievole e curiosa, sempre pronta a imparare e mettermi in gioco.
+                                <br> Lavorare nell'attività di famiglia mi ha insegnato a interagire con le persone e ad ascoltare le loro esigenze, un aspetto fondamentale nel design di esperienze digitali.
+                                <br> Nel tempo libero, creo prodotti all'uncinetto, una passione che mi permette di esprimere ulteriormente la mia creatività.<br> Oggi, sono entusiasta di mettermi in gioco nel mondo del UX/UI design, dove ogni progetto rappresenta per me una nuova sfida e un’opportunità per crescere.
+                                <br> 
+                            </p>
+
+                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3 cta-container">
+                                <a class="btn cta-button-gradient btn-lg px-5 py-3 me-sm-3 fw-bolder" href="#" data-page="curriculum.html" onclick="loadPage(event)" aria-label="vai alla pagina Curriculum">Guarda CV<i class="fa-solid fa-arrow-right mx-3"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-5">
+        <div class="container text-center">
+            <p class="text-center p-footer">Valeria Marzocca © 2025</p>
+            <a href="https://www.instagram.com/valeriamarzocca" class="text-black" target="_blank">
+                <i class="bi bi-instagram fs-3 me-2"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/valeria-marzocca" class="text-black" target="_blank">
+                <i class="bi bi-linkedin fs-3 ms-2"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>

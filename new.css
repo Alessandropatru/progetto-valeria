@@ -1,0 +1,61 @@
+body{
+    background: linear-gradient(150.03deg, #BC6AD7 0%, #E36C96 25.69%, #F36C7A 38.62%, #FF7D5B 52.71%, #FF8F55 64.99%, #FF9951 75.59%);
+    min-height: 100vh;
+}
+.cta-back {
+    display: inline-block;
+    margin-left: 4rem;
+    padding: 8px 15px;
+    color: #030712;
+    font-size: 30px !important;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 38px !important;
+   
+    background: #fefefe;
+    transition: all 0.5s ease-in-out;
+   
+}
+.cta-back:hover {
+    transform: scale(1.05);
+    background-color: #030712;
+    color: #fefefe;
+    transition: all 0.5s ease-in-out;
+    
+}
+.contact-form {
+    background:  #fefefe;
+    margin-top: 15%;
+    margin-bottom: 30rem;
+    width: 90%;
+    height: 90%;
+   
+}
+.contact-image {
+    text-align: center;
+}
+.contact-image img {
+    border-radius: 6rem;
+    width: 11%;
+    margin-top: -3%;
+}
+form{
+    padding: 182px;
+}
+
+.cta-gradient-new {
+    display: inline-block;
+    padding: 15px 30px;
+    color: #fefefe;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 28px !important;
+    border: 1px solid transparent;
+    background: linear-gradient(150.03deg, #BC6AD7 0%, #E36C96 25.69%, #F36C7A 38.62%, #FF7D5B 52.71%, #FF8F55 64.99%, #FF9951 75.59%);
+    transition: all 0.5s ease-in-out;
+}
+.cta-gradient-new:hover{
+    transform: scale(1.05);
+    color: #030712;
+}
