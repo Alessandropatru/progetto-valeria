@@ -1,92 +1,106 @@
+// Funzione per caricare la pagina
 function loadPage(event) {
-    event.preventDefault();
-    const page = event.target.getAttribute('data-page');
-    const content = document.getElementById('dynamic-content');
+  event.preventDefault();
+  
+  const link = event.target.closest('a');
+  const page = link?.getAttribute('data-page');
 
-    if (page === 'index.html') {
-        fetch('index.html')
+  if (!page) {
+      console.error('Errore: data-page non trovato.');
+      return;
+  }
+
+  const content = document.getElementById('dynamic-content');
+  const navbar = document.querySelector('nav');
+  const footer = document.querySelector('footer');
+
+
+    // Funzione per caricare il contenuto dinamico
+    const loadContent = (page, content, navbar, footer) => {
+        fetch(page)
             .then(response => response.text())
             .then(data => {
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(data, 'text/html');
+                const mainContent = doc.querySelector('#dynamic-content') || doc.body;
 
-                // Estrai solo il contenuto principale (escludendo navbar e footer)
-                const mainContent = doc.querySelector('#dynamic-content').innerHTML;
-                content.innerHTML = mainContent;
-            })
-            .catch(error => console.error('Errore nel caricamento della pagina:', error));
-    } else if (page === 'curriculum.html') {
-        fetch('curriculum.html')
-            .then(response => response.text())
-            .then(data => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(data, 'text/html');
-
-                // Estrai il contenuto del body
-                const bodyContent = doc.body.innerHTML;
-                content.innerHTML = bodyContent;
-            })
-            .catch(error => console.error('Errore nel caricamento della pagina:', error));
-    } else if (page === 'contatti.html') {
-        fetch('contatti.html')
-            .then(response => response.text())
-            .then(data => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(data, 'text/html');
-
-                // Rimuovi la navbar e il footer dal contenuto caricato
-                const navbar = doc.querySelector('nav');
-                const footer = doc.querySelector('footer');
-                if (navbar) navbar.remove();
-                if (footer) footer.remove();
-
-                // Estrai il contenuto del body senza navbar e footer
-                const bodyContent = doc.body.innerHTML;
-                content.innerHTML = bodyContent;
-            })
-            .catch(error => console.error('Errore nel caricamento della pagina:', error));
-    }
-}
-function loadPage(event) {
-    event.preventDefault();
-    const page = event.target.getAttribute('data-page');
-    const content = document.getElementById('dynamic-content');
-    const navbar = document.querySelector('nav');
-    const footer = document.querySelector('footer');
-
-    fetch(page)
-        .then(response => response.text())
-        .then(data => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(data, 'text/html');
-
-            // Estrai solo il contenuto principale
-            const mainContent = doc.querySelector('#dynamic-content');
-            if (mainContent) {
-                content.innerHTML = mainContent.innerHTML;
-
-                // Carica dinamicamente il foglio di stile per contatti.html
-                const existingStyle = document.getElementById('dynamic-style');
-                if (existingStyle) existingStyle.remove(); // Rimuovi il foglio di stile precedente
-
-                const style = document.createElement('link');
-                style.rel = 'stylesheet';
-                style.id = 'dynamic-style';
-
-                if (page === 'contatti.html') {
-                    style.href = 'new.css';
-                    if (navbar) navbar.style.display = 'none';
-                    if (footer) footer.style.display = 'none';
+                if (mainContent) {
+                    content.innerHTML = mainContent.innerHTML;
+                    updateStyles(page, navbar, footer);
                 } else {
-                    style.href = 'style.css'; // Foglio di stile principale
-                    if (navbar) navbar.style.display = '';
-                    if (footer) footer.style.display = '';
+                    console.error('Errore: #dynamic-content non trovato nella pagina caricata.');
                 }
+            })
+            .catch(error => console.error(`Errore nel caricamento della pagina ${page}:`, error));
+    };
 
-                document.head.appendChild(style);
-            } else {
-                console.error('Errore: #dynamic-content non trovato nella pagina caricata.');
-            }
-        })
-        .catch(error => console.error('Errore nel caricamento della pagina:', error));
+    // Funzione per aggiornare gli stili dinamici
+    const updateStyles = (page, navbar, footer) => {
+        // Rimuovi eventuali fogli di stile esistenti
+        const existingStyle = document.getElementById('dynamic-style');
+        if (existingStyle) existingStyle.remove();
+
+        // Aggiungi il nuovo foglio di stile
+        const style = document.createElement('link');
+        style.rel = 'stylesheet';
+        style.id = 'dynamic-style';
+
+        if (page === 'contatti.html') {
+            style.href = 'new.css';
+            if (navbar) navbar.style.display = 'none';
+            if (footer) footer.style.display = 'none';
+        } else {
+            style.href = 'style.css';
+            if (navbar) navbar.style.display = '';
+            if (footer) footer.style.display = '';
+        }
+
+        document.head.appendChild(style);
+    };
+
+    // Carica il contenuto della pagina
+    loadContent(page, content, navbar, footer);
 }
+
+// Funzione per gestire la classe 'active' dei link della navbar
+const navbarLinks = document.querySelectorAll('.navbar-nav .nav-link');
+navbarLinks.forEach(item => {
+    item.addEventListener('click', function () {
+        navbarLinks.forEach(link => link.classList.remove('active')); // Rimuovi 'active' da tutti
+        item.classList.add('active'); // Aggiungi 'active' al link cliccato
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form");
+    const thankYouMessage = document.getElementById("thank-you-message");
+  
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Blocca il comportamento di invio predefinito
+  
+      const formData = new FormData(form);
+  
+      // Esegui il fetch con Formspree
+      fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.reset(); // Reset del form dopo l'invio
+          thankYouMessage.style.display = "block"; // Mostra il messaggio di successo
+  
+          // Visualizza l'alert e reindirizza dopo un delay di 4 secondi
+          setTimeout(() => {
+            alert("Messaggio inviato con successo!");
+            window.location.href = "index.html"; // Puoi cambiare l'URL
+          }, 4000);
+        } else {
+          alert("Errore durante l'invio. Riprova.");
+        }
+      }).catch(error => {
+        alert("Errore di rete. Controlla la connessione.");
+      });
+    });
+  });
